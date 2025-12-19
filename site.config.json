@@ -4,5 +4,6 @@
   "site_name": "aur-strategy",
   "epochs": 30,
   "path": "./out",
-  "write_retry_limit": 3
+  "write_retry_limit": 3,
+  "site_obj_id": "0x9560f0e8a0fe4b8bd22eab764a73547349f530fb7673469e9cec8d6b5938164b"
 }
