@@ -1,0 +1,8 @@
+{
+  "network": "mainnet",
+  "owner": "0xae692068c4aed5cb78fc7017a91a977a692b9a57fb07f93538d8d68fd5172d53",
+  "site_name": "aur-strategy",
+  "epochs": 30,
+  "path": "./out",
+  "write_retry_limit": 3
+}
