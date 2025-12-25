@@ -40,6 +40,7 @@ import {
 } from "@/lib/sui-client";
 import { useToast } from "@/hooks/use-toast";
 import { cancelSchedule, schedule } from "@/lib/utils";
+import { Switch } from "@/components/ui/switch";
 
 interface DeploymentHistoryItem {
   id: string;
@@ -87,6 +88,7 @@ export function MiningDashboard() {
   });
   const [isLoadingBalances, setIsLoadingBalances] = useState(false);
 
+  const [claimSui, setClaimSui] = useState(true);
   const [suiPerBlock, setSuiPerBlock] = useState("0.001");
   const [blockPerRound, setBlockPerRound] = useState("12");
   const [numberOfRounds, setNumberOfRounds] = useState("1000");
@@ -207,7 +209,7 @@ export function MiningDashboard() {
             amountPerBlock: BigInt(Number(suiPerBlock) * 1e9),
             amountDecimal: totalSuiDecimal,
             blockSelected: blockSelected,
-            claimSui: Number(balances.sui) > 0,
+            claimSui: claimSui && Number(balances.sui) > 0,
           });
 
           const newHistoryItem: DeploymentHistoryItem = {
@@ -593,6 +595,27 @@ export function MiningDashboard() {
                     </SelectContent>
                   </Select>
                 </div>
+              </div>
+            </div>
+            <div className="p-4 rounded-lg border border-primary/20 bg-background/20">
+              <div className="flex items-center justify-between">
+                <div className="space-y-0.5">
+                  <Label
+                    htmlFor="claim-sui"
+                    className="text-sm font-semibold text-primary uppercase tracking-wide cursor-pointer"
+                  >
+                    Claim SUI
+                  </Label>
+                  <p className="text-xs text-muted-foreground">
+                    Automatically claim SUI rewards during mining
+                  </p>
+                </div>
+                <Switch
+                  id="claim-sui"
+                  checked={claimSui}
+                  onCheckedChange={setClaimSui}
+                  className="data-[state=checked]:bg-primary"
+                />
               </div>
             </div>
           </div>
