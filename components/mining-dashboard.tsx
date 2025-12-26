@@ -614,7 +614,7 @@ export function MiningDashboard() {
                   id="claim-sui"
                   checked={claimSui}
                   onCheckedChange={setClaimSui}
-                  className="data-[state=checked]:bg-primary"
+                  className="border-primary/30 data-[state=unchecked]:bg-primary/10"
                 />
               </div>
             </div>
