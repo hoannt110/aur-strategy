@@ -178,15 +178,15 @@ export function MiningDashboard() {
         const thresholdMotherlodeCriteria =
           motherlodeStrategy == "none" ||
           (motherlodeStrategy == "higher" &&
-            motherlode >= BigInt(thresholdMotherlode) * BigInt(1e9)) ||
+            motherlode >= BigInt(Number(thresholdMotherlode) * 1e9)) ||
           (motherlodeStrategy == "lower" &&
-            motherlode <= BigInt(thresholdMotherlode) * BigInt(1e9));
+            motherlode <= BigInt(Number(thresholdMotherlode) * 1e9));
         const thresholdTotalDeployCriteria =
           deployStrategy == "none" ||
           (deployStrategy == "higher" &&
-            totalDeploy >= BigInt(thresholdTotalDeploy) * BigInt(1e9)) ||
+            totalDeploy >= BigInt(Number(thresholdTotalDeploy) * 1e9)) ||
           (deployStrategy == "lower" &&
-            totalDeploy <= BigInt(thresholdTotalDeploy) * BigInt(1e9));
+            totalDeploy <= BigInt(Number(thresholdTotalDeploy) * 1e9));
 
         const roundThreadHold = roundsRemaining > 0;
 
