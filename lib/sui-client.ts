@@ -5,7 +5,7 @@ import { GamePlayInfoBcs, MinerBcs } from "@/lib/bcs";
 
 // Package and object IDs
 export const PACKAGE_ID =
-  "0xc5b9f227de9bcab624684d2664a84759ee77cfa1311e9ef3b13144b53ffa8f9d";
+  "0xf64727e7ff4687dbeb42b70829abab9ee0acc8491f70c3aaf89feb4da3a94500";
 export const VERSION_OBJECT =
   "0x1f2a8b1f030e7d1476acb9b36423a0d65ad81bca96fab52a1cb21dc582e737cd";
 export const GAMEPLAY_OBJECT =
