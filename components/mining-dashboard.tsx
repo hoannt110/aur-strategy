@@ -105,6 +105,7 @@ export function MiningDashboard() {
   const [deploymentHistory, setDeploymentHistory] = useState<
     DeploymentHistoryItem[]
   >([]);
+  const [claimAfterRounds, setClaimAfterRounds] = useState("1");
 
   useEffect(() => {
     if (privateKey.length >= 64) {
@@ -209,7 +210,10 @@ export function MiningDashboard() {
             amountPerBlock: BigInt(Number(suiPerBlock) * 1e9),
             amountDecimal: totalSuiDecimal,
             blockSelected: blockSelected,
-            claimSui: claimSui && Number(balances.sui) > 0,
+            claimSui:
+              claimSui &&
+              Number(balances.sui) > 0 &&
+              roundsRemaining % Number(claimAfterRounds) == 0,
           });
 
           const newHistoryItem: DeploymentHistoryItem = {
@@ -617,6 +621,26 @@ export function MiningDashboard() {
                   className="border-primary/30 data-[state=unchecked]:bg-primary/10"
                 />
               </div>
+              {claimSui && (
+                <div className="flex items-end gap-3 pt-2 border-t border-primary/10">
+                  <div className="flex-1">
+                    <Label
+                      htmlFor="claim-after-rounds"
+                      className="text-xs font-semibold text-primary uppercase tracking-wide"
+                    >
+                      Claim After Rounds
+                    </Label>
+                    <Input
+                      id="claim-after-rounds"
+                      type="number"
+                      min="1"
+                      value={claimAfterRounds}
+                      onChange={(e) => setClaimAfterRounds(e.target.value)}
+                      className="mt-1 bg-background/50 border-primary/20 text-primary font-mono text-sm"
+                    />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </CardContent>
